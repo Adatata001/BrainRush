@@ -254,7 +254,7 @@ final List<String> _musicWords = [
   "solo", "duet", "band", "singer", "composer", "genre", "jazz", "blues", "rock",
   "pop", "classical", "folk", "rap", "metal", "acoustic", "amplifier", "tune",
   "refrain", "verse", "chorus", "bridge", "pitch", "tone", "marimba", "harmonic",
-  "timbre", "session"
+  "session"
 ];
 
 final List<String> _musicClues = [
@@ -271,7 +271,7 @@ final List<String> _musicClues = [
   "Non-electric music", "Device that increases sound", "Melodic sequence", "Repeated musical phrase",
   "Section of a song", "Main repeating section", "Linking section", "Highness or lowness of a sound",
   "Quality of a musical note", "Percussion instrument with wooden bars", "Related to harmony",
-  "Tone color or quality", "Professional recording time"
+   "Professional recording time"
 ];
 
 
@@ -299,7 +299,7 @@ final List<String> _paintingClues = [
   "Thick paint texture", "Faithful depiction", "Geometric abstraction", "Place to show art",
   "Art display", "Person who paints", "Highly regarded artwork", "Artist's mark",
   "Preliminary work", "Distinct manner", "Set of colors", "Arrangement", "Decorative design",
-  "Surface for art", "art made from small pieces" "Materials used",
+  "Surface for art", "art made from small pieces", "Materials used",
 ];
 
 
@@ -311,7 +311,7 @@ final List<String> _cookingWords = [
   "pan", "spice", "herb", "knife", "timer", "grater", "mixer", "stir",
   "funnel", "peel", "pour", "measure", "strain", "tongs", "lid", "baste",
   "caramel", "flavor", "ferment", "roasting", "toasting", "zest", "whip",
-  "blender", "boiling"
+  "blender", "boiling", "griddle"
 ];
 
 final List<String> _cookingClues = [
@@ -327,7 +327,8 @@ final List<String> _cookingClues = [
   "Pour liquid", "Determine quantity", "Remove solids from liquid", "Gripping tool",
   "Cover for pot", "Moisten food during cooking", "Sugar cooked until brown",
   "Taste or aroma", "Process of aging food", "Cooking by dry heat", "Browning food by heat",
-  "Outer peel of citrus", "Beat cream or eggs", "Electric mixer", "Boiling water"
+  "Outer peel of citrus", "Beat cream or eggs", "Electric mixer", "Boiling water",
+  "Flat cooking surface"
 ];
 
 
@@ -341,7 +342,8 @@ final List<String> _lawWords = [
   "convict", "attorney", "counsel", "judge", "jury",
   "bailiff", "notary", "lawyer", "lawful", "legal",
   "warrant", "charge", "court", "decree", "claim",
-  "plea", "fine","litigate", "defraud", "plaintiff", "testator", "litigant", "judgment"
+  "plea", "fine", "litigate", "defraud", "plaintiff",
+  "testator", "litigant", "judgment", "subrogation"  // added "subrogation" as 50th word
 ];
 
 final List<String> _lawClues = [
@@ -356,8 +358,12 @@ final List<String> _lawClues = [
   "Group deciding", "Court officer", "Legal witness",
   "Legal worker", "Allowed by law", "Legal", "Legal order",
   "Legal claim", "Admission", "Monetary penalty",
-  "Engage in lawsuit", "Cheat or deceive", "Person suing", "Will maker", "Party in case", "Court decision"
+  "Engage in lawsuit", "Cheat or deceive", "Person suing",
+  "Will maker", "Party in case", "Court decision",
+  "Person who makes a will", "Party involved in lawsuit", "Final court decision",
+  "Right to claim payment from another's debt"  // clue for "subrogation"
 ];
+
 
 
 final List<String> _engineeringWords = [
@@ -369,7 +375,7 @@ final List<String> _engineeringWords = [
   "screw", "bolt", "nut", "lever", "pulley", "cam", "crank", "joint",
   "cogwheel", "kinematics", "dynamics", "fluid", "circuitry",
   // new words
-  "gasket", "wiring", "engineer", "servo", "clutch", "axle", "gearbox"
+  "gasket", "wiring", "engineer", "clutch", "axle", "gearbox"
 ];
 
 final List<String> _engineeringClues = [
@@ -387,7 +393,7 @@ final List<String> _engineeringClues = [
   "Study of motion", "Study of forces", "Substance flow", "Electric system",
   // new clues
   "Seal between parts", "Electrical cables", "Technical professional",
-  "Automated controller", "Device to connect/disconnect", "Rotating shaft", "Gear housing"
+  "Device to connect/disconnect", "Rotating shaft", "Gear housing"
 ];
 
 
@@ -400,7 +406,7 @@ final List<String> _aviationWords = [
   "fuel", "airport", "passenger", "crew", "seating", "emergency",
   "parachute", "voicebox", "pressure", "rudder", "yaw", "pitch", "roll",
   "vector", "approach", "departure", "terminal", "airline", "flightpath",
-  "clearance", "jetway", "taxiway"
+  "clearance"
 ];
 
 final List<String> _aviationClues = [
@@ -416,7 +422,7 @@ final List<String> _aviationClues = [
   "Safety chute", "Cockpit sound", "Cabin pressure", "Steering fin",
   "Side to side", "Up and down", "Rotate", "Flight line", "Landing path",
   "Flight leave", "Airport building", "Flight company", "Flight route",
-  "Permission to fly", "Connector to plane", "Path for planes on ground"
+  "Permission to fly"
 ];
 
 
@@ -519,27 +525,29 @@ final List<String> _fashionWords = [
   "tunic", "placket", "sequin", "jumpsuit", "blazer", "corset", "pumps",
   "legging", "kimono", "culotte", "shawl", "halter", "bodice", "sweater",
   "jersey", "parka", "chinos", "cardigan", "tanktop", "anorak", "sarong",
-  "muffler", "tassels", "gloves", "jacket", "suspend", "buttons", "scarf",
+  "muffler", "tassels", "gloves", "jacket", "suspenders", "buttons", "scarf",
   "necktie", "beanie", "overalls", "earring", "bracelet", "skirt", "blouse",
-  "mittens", "brogues", "loafers", "oxfords", "sneaker", "flannel", "fedora",
-  "tuxedo", "slipper", "kilt", "hoodie", "crochet", "zippers", "beret"
+  "mittens", "brogues", "loafers", "oxfords", "sneakers", "flannel", "fedora",
+  "tuxedo", "slippers", "kilt", "hoodie", "crochet", "zippers", "beret"
 ];
 
 final List<String> _fashionClues = [
   "Loose-fitting top", "Garment opening strip", "Shiny decoration",
   "One-piece outfit", "Casual jacket", "Fitted bodice", "Heeled shoe",
-  "Tight pants", "Japanese robe", "Split skirt", "Shoulder wrap",
+  "Tight pants", "Japanese robe", "Wide-legged pants", "Shoulder wrap",
   "Backless top", "Upper part of dress", "Warm knitwear", "Stretchy shirt",
   "Hooded coat", "Casual trousers", "Open sweater", "Sleeveless shirt",
-  "Pullover coat", "Wrap skirt", "Neck warmer", "Hanging ornament",
-  "Hand covers", "Upper garment", "Hold up pants", "Closures on clothes",
+  "Pullover coat", "Wrap skirt", "Neck warmer", "Decorative hanging pieces",
+  "Hand covers", "Outer garment", "Hold up pants", "Closures on clothes",
   "Neck wrap", "Formal neckwear", "Warm cap", "Full-body garment",
-  "Ear jewelry", "Wrist accessory", "Lower wear", "Dress shirt",
+  "Ear jewelry", "Wrist accessory", "Lower garment", "Dress shirt",
   "Finger warmers", "Wingtip shoes", "Slip-on shoes", "Formal shoes",
-  "Sport shoe", "Soft fabric shirt", "Brimmed hat", "Formal suit",
-  "Comfy shoe", "Scottish skirt", "Sweatshirt", "Knitted fabric",
-  "Fasteners on clothes", "Flat round cap"
+  "Sport shoes", "Soft fabric shirt", "Brimmed hat", "Formal suit",
+  "Comfy shoes", "Scottish skirt", "Sweatshirt", "Knitted fabric",
+  "Fasteners on clothes", "Round hat", "French flat cap"
 ];
+
+
 
 final List<String> _photographyWords = [
   "viewing", "panels", "pixels", "focus", "flash", "manual", "sensor",
@@ -605,28 +613,63 @@ final List<String> _psychologyWords = [
   "socials", "temper", "beliefs", "impulse", "mental", "crisis", "grieve",
   "psyche", "disrupt", "remorse", "guilt", "person", "esteem", "addicts",
   "adjusts", "memory", "denial", "craves", "brains", "wishes", "sexual",
-  "border", "silent", "crisis", "talker", "outcry", "family", "values",
-  "socials", "trauma", "intake", "repress", "mindset", "delays"
+  "border", "silent", "talker", "outcry", "family", "intake", "repress",
+  "mindset", "delays", "trouble", "reflect", "resolve", "reaction", "support"
 ];
 
+
 final List<String> _psychologyClues = [
-  "Healing process", "Feeling others' pain", "Routine acts",
-  "Worry disorder", "Internal state", "What drives acts",
-  "Sleep stories", "Dealing tactic", "Mental strain",
-  "Introverted trait", "Extreme fear", "Past wound",
-  "Moral stance", "Caregiver", "Relating to peers",
-  "Mood balance", "Held truths", "Sudden urge",
-  "Mind health", "Life turning point", "Deep sorrow",
-  "Mind state", "Break in state", "Deep regret",
-  "Inner shame", "Self image", "Need for fix",
-  "Life tuning", "Recalled info", "Truth refusal",
-  "Strong want", "Thinking part", "Inner hopes",
-  "Urge desire", "Limit line", "Quiet type",
-  "Crisis time", "Talkative one", "Public shout",
-  "Kin group", "Belief rules", "Peer bonds",
-  "Emotional harm", "Food taken", "Push down",
-  "Way of view", "Delay act"
+  "Talking treatment",              // therapy
+  "Understanding others' feelings",// empathy
+  "Regular behaviors",             // habits
+  "Excessive worry",               // anxiety
+  "Emotional state",               // feeling
+  "Reason for action",             // motive
+  "Unconscious thoughts",          // dreams
+  "Handling difficulties",         // coping
+  "Mental pressure",               // stress
+  "Lack of confidence",            // shyness
+  "Extreme fear",                  // phobia
+  "Emotional injury",              // trauma
+  "Core principles",               // values
+  "Caretaker figure",              // parent
+  "Interactions",                  // socials
+  "Emotional outburst",            // temper
+  "Accepted truths",               // beliefs
+  "Sudden urge",                   // impulse
+  "Cognitive state",               // mental
+  "Turning point",                 // crisis
+  "Mourning process",              // grieve
+  "Human mind",                    // psyche
+  "Disturb normalcy",              // disrupt
+  "Deep regret",                   // remorse
+  "Self-blame",                    // guilt
+  "Individual identity",           // person
+  "Self-worth",                    // esteem
+  "Substance users",               // addicts
+  "Behavior changes",              // adjusts
+  "Recollection ability",          // memory
+  "Refusal to accept",             // denial
+  "Strong desire",                 // craves
+  "Cognitive organ",               // brains
+  "Unfulfilled desires",           // wishes
+  "Sexual drive",                  // sexual
+  "Personality split",             // border
+  "Not speaking",                  // silent
+  "Excessive speaker",             // talker
+  "Loud protest",                  // outcry
+  "Close relatives",               // family
+  "Food consumption",              // intake
+  "Push memories down",            // repress
+  "Way of thinking",              // mindset
+  "Postpones action",              // delays
+  "Difficulty area",               // trouble
+  "Think deeply",                  // reflect
+  "Solve conflict",                // resolve
+  "Emotional reply",               // reaction
+  "Offer help"                     // support
 ];
+
 
 final List<String> _agricultureWords = [
   "harvest", "ploughs", "seeders", "tractor", "farmer", "irrigate",
@@ -664,30 +707,67 @@ final List<String> _computerScienceWords = [
   "syntax", "boolean", "storage", "firewall", "router", "binary",
   "cache", "output", "input", "coding", "script", "markup",
   "client", "server", "folder", "cursor", "prompt", "domain",
-  "cookie", "upload", "buffer", "socket", "thread", "widget",
-  "mobile", "browser", "tablet", "driver", "cloud", "layout",
-  "github", "plugin", "launch", "search", "format", "window",
-  "button", "screen", "cursor", "editor", "update", "filter"
+  "upload", "buffer", "socket", "thread", "widget", "mobile",
+  "browser", "tablet", "driver", "cloud", "layout", "github",
+  "plugin", "launch", "search", "format", "window", "button",
+  "screen", "editor", "update", "filter", "array", "object",
+  "method", "loop"
 ];
 
+
 final List<String> _computerScienceClues = [
-  "Behind systems", "Web tracker", "Data links",
-  "Entry bridge", "Make program", "Tiny squares",
-  "Code rules", "True/false type", "Data saving",
-  "Net block", "Net splitter", "Number code",
-  "Fast store", "Data result", "Enter data",
-  "Code writing", "Run file", "Tag type",
-  "User side", "Host side", "File space",
-  "Text arrow", "User line", "Web name",
-  "Tiny file", "Send file", "Hold data",
-  "Port link", "Code stream", "UI part",
-  "Small phone", "Web viewer", "Touch screen",
-  "Run tool", "Web save", "Design view",
-  "Code site", "Extra tool", "Start app",
-  "Find info", "Text style", "App box",
-  "Click item", "View zone", "Type arrow",
-  "Code pad", "Fix file", "Sort info"
+  "Server-side logic",             // backend
+  "Stored browsing data",          // cookies
+  "Connection system",             // network
+  "Access entry point",            // gateway
+  "Turn code into binary",         // compile
+  "Tiny image dots",               // pixels
+  "Code structure rules",          // syntax
+  "True or false value",           // boolean
+  "Digital data space",            // storage
+  "Blocks unwanted traffic",       // firewall
+  "Directs network traffic",       // router
+  "0s and 1s",                     // binary
+  "Fast temporary memory",         // cache
+  "Data coming out",               // output
+  "Data going in",                 // input
+  "Writing programs",              // coding
+  "Executable code",               // script
+  "HTML type language",            // markup
+  "User end system",               // client
+  "Hosting end",                   // server
+  "File container",                // folder
+  "Pointer on screen",             // cursor
+  "Command line sign",             // prompt
+  "Website address",               // domain
+  "Send data to web",              // upload
+  "Data overflow space",           // buffer
+  "Data port",                     // socket
+  "Sequence of execution",         // thread
+  "UI element",                    // widget
+  "Smartphone or tablet",          // mobile
+  "Web viewer app",                // browser
+  "Portable screen device",        // tablet
+  "Hardware controller",           // driver
+  "Online storage",                // cloud
+  "Design arrangement",            // layout
+  "Code repository",               // github
+  "Software extension",            // plugin
+  "App start-up",                  // launch
+  "Look for data",                 // search
+  "Change text shape",             // format
+  "Program view box",              // window
+  "Clickable icon",                // button
+  "Display surface",               // screen
+  "Code editor",                   // editor
+  "Software improvement",          // update
+  "Sort data items",               // filter
+  "List of values",                // array
+  "Instance of a class",           // object
+  "Function in object",            // method
+  "Repetitive process",            // loop
 ];
+
 
 
 final List<String> _chemistryWords = [
