@@ -187,7 +187,7 @@ final List<String> _medicineWords = [
   "xray", "scan", "stethoscope", "pulse", "oxygen", "bandage", "tumor", "scanner", "vital",
   "dosage", "symptom", "virus", "bacteria", "lipid", "enzyme", "hormone", "renal",
   "spine", "bone", "muscle", "tissue", "organ", "brain", "lung", "grafting",
-  "monitor", "sutures", "painkiller", "fatigue"
+  "monitor", "sutures", "painkiller", "fatigue",
 ];
 
 final List<String> _medicineClues = [
@@ -233,6 +233,7 @@ final List<String> _medicineClues = [
   "Skeletal component",                              // bone
   "Fibrous tissue",                                  // muscle
   "Group of similar cells",                          // tissue
+  "Structure with specific function"
   "Control center of body",                          // brain
   "Organ for breathing",                             // lung
   "Transplanting skin or tissue",                    // grafting
