@@ -233,14 +233,14 @@ final List<String> _medicineClues = [
   "Skeletal component",                              // bone
   "Fibrous tissue",                                  // muscle
   "Group of similar cells",                          // tissue
-  "Structure with specific function"
+  "Structure with specific function",
   "Control center of body",                          // brain
   "Organ for breathing",                             // lung
   "Transplanting skin or tissue",                    // grafting
   "Device to check vital signs",                     // monitor
   "Stitches used after surgery",                     // sutures
   "Drug that relieves pain",                         // painkiller
-  "Feeling tired"                                    // fatigue
+  "Feeling tired",                                 // fatigue
 ];
 
 
