@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:async';
 
+
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({super.key});
 
@@ -14,20 +15,28 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   void initState() {
-    super.initState();
-    Timer.periodic(const Duration(milliseconds: 60), (timer) {
-      if (_progress >= 1.0) {
-        timer.cancel();
-        Future.delayed(const Duration(milliseconds: 300), () {
-          Navigator.pushReplacementNamed(context, '/home');
+   super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((ctx) {
+      precacheImage(const AssetImage('assets/images/home_logo.png'), context);
+      precacheImage(const AssetImage('assets/images/Logo@2x-8.png'), context).then((ctx) {
+        Timer.periodic(const Duration(milliseconds: 60), (timer) {
+          if (_progress >= 1.0) {
+            timer.cancel();
+            Future.delayed(const Duration(milliseconds: 300), () {
+              if (mounted) {
+                Navigator.pushReplacementNamed(context, '/home');
+              }
+            });
+          } else {
+            setState(() {
+              _progress += 0.01;
+            });
+          }
         });
-      } else {
-        setState(() {
-          _progress += 0.01;
-        });
-      }
+      });
     });
   }
+
 
   @override
   Widget build(BuildContext context) {

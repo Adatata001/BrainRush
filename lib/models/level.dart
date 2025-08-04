@@ -184,28 +184,64 @@ final List<String> _medicineWords = [
   "anatomy", "antibody", "vaccine", "surgery", "therapy", "pharmacy", "pathogen",
   "cellular", "immunity", "biopsy", "epidemic", "pandemic", "antigen", "fracture",
   "insulin", "glucose", "globulin", "sedation", "injector", "clinic", "nursing",
-  "xray", "scan", "pulse", "oxygen", "bandage", "tumor", "scanner", "vital",
+  "xray", "scan", "stethoscope", "pulse", "oxygen", "bandage", "tumor", "scanner", "vital",
   "dosage", "symptom", "virus", "bacteria", "lipid", "enzyme", "hormone", "renal",
   "spine", "bone", "muscle", "tissue", "organ", "brain", "lung", "grafting",
-  "monitor", "sutures", "painkill", "fatigue"
+  "monitor", "sutures", "painkiller", "fatigue"
 ];
 
 final List<String> _medicineClues = [
-  "Study of body structure", "Protein produced to fight antigens", "Stimulates immune response",
-  "Medical procedure involving incision", "Treatment of disease", "Place to get medications",
-  "Microorganism causing disease", "Made of cells", "Body's defense system", "Sample removal for examination",
-  "Outbreak in a community", "Worldwide outbreak", "Substance that triggers immune response",
-  "Broken bone", "Hormone regulating sugar", "Simple sugar in blood", "Protein related to immunity",
-  "Calming or sleep aid", "Device for injection", "Outpatient medical facility", "Health care profession",
-  "Medical image technique", "Medical scan technique", "Instrument to hear heartbeat", "Heart rate",
-  "Essential gas for breathing", "Material for wrapping wounds", "Abnormal cell growth",
-  "Device to create images", "Crucial for life", "Amount of medicine given", "Indication of illness",
-  "Tiny infectious agent", "Single-celled organism", "Fat in the body", "Biological catalyst",
-  "Chemical messenger", "Relating to kidneys", "Backbone structure", "Skeletal component",
-  "Fibrous tissue", "Group of tissues", "Control center of body", "Organ for breathing",
-  "Grafting skin or tissue", "Device to check vital signs", "Stitches used after surgery",
-  "Painkiller", "Feeling tired"
+  "Study of body structure",                          // anatomy
+  "Protein produced to fight antigens",              // antibody
+  "Stimulates immune response",                      // vaccine
+  "Medical procedure involving incision",            // surgery
+  "Treatment of disease",                            // therapy
+  "Place to get medications",                        // pharmacy
+  "Microorganism causing disease",                   // pathogen
+  "Made of cells",                                   // cellular
+  "Body's defense system",                           // immunity
+  "Sample removal for examination",                  // biopsy
+  "Outbreak in a community",                         // epidemic
+  "Worldwide outbreak",                              // pandemic
+  "Substance that triggers immune response",         // antigen
+  "Broken bone",                                     // fracture
+  "Hormone regulating sugar",                        // insulin
+  "Simple sugar in blood",                           // glucose
+  "Protein related to immunity",                     // globulin
+  "Calming or sleep aid",                            // sedation
+  "Device for injection",                            // injector
+  "Outpatient medical facility",                     // clinic
+  "Health care profession",                          // nursing
+  "Medical image technique",                         // xray
+  "Medical scan technique",                          // scan
+  "Instrument to hear heartbeat",                    // stethoscope
+  "Heart rate",                                      // pulse
+  "Essential gas for breathing",                     // oxygen
+  "Material for wrapping wounds",                    // bandage
+  "Abnormal cell growth",                            // tumor
+  "Device to create images",                         // scanner
+  "Crucial for life",                                // vital
+  "Amount of medicine given",                        // dosage
+  "Indication of illness",                           // symptom
+  "Tiny infectious agent",                           // virus
+  "Single-celled organism",                          // bacteria
+  "Fat in the body",                                 // lipid
+  "Biological catalyst",                             // enzyme
+  "Chemical messenger",                              // hormone
+  "Relating to kidneys",                             // renal
+  "Backbone structure",                              // spine
+  "Skeletal component",                              // bone
+  "Fibrous tissue",                                  // muscle
+  "Group of similar cells",                          // tissue
+  "Control center of body",                          // brain
+  "Organ for breathing",                             // lung
+  "Transplanting skin or tissue",                    // grafting
+  "Device to check vital signs",                     // monitor
+  "Stitches used after surgery",                     // sutures
+  "Drug that relieves pain",                         // painkiller
+  "Feeling tired"                                    // fatigue
 ];
+
 
 
 

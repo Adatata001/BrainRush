@@ -19,6 +19,12 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _isPressed = false;
   late SoundService _soundService;
 
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();

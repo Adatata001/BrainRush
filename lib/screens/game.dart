@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:brainrush/utils/sound.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/widgets.dart';
 
 class GameScreen extends StatefulWidget {
   final Category category;
@@ -29,7 +30,7 @@ class GameScreen extends StatefulWidget {
   State<GameScreen> createState() => _GameScreenState();
 }
 
-class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
+class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, WidgetsBindingObserver {
   late List<String> displayTiles;
   late List<String> answerSpaces;
   late List<bool> isFilled;
@@ -45,6 +46,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   Color feedbackColor = Colors.transparent;
   bool shouldShakeLetters = false;
   bool shouldLightUpGreen = false;
+  bool _isProcessingHint = false;
   int _timeAddedCount = 0; 
   bool _showNotification = false; 
   String _notificationMessage = ''; 
@@ -99,6 +101,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _initializeAnimations();
     displayedPoints = widget.initialPoints;
   }
@@ -151,6 +154,27 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
     _preloadSounds();
   }
 
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused) {
+      // App minimized or screen locked
+      if (!isPaused && !isGameOver && !isLevelComplete) {
+        setState(() {
+          isPaused = true;
+        });
+        _tickerPlayer.pause(); // Pause the ticking sound
+      }
+    } else if (state == AppLifecycleState.resumed) {
+      // App came back to foreground
+      if (isPaused && !isGameOver && !isLevelComplete) {
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => _buildPauseDialog(),
+        );
+      }
+    }
+  }
+
   Future<void> _preloadSounds() async {
     await _tickerPlayer.setSource(AssetSource('sounds/ticker.mp3'));
     await _audioPlayer.setSource(AssetSource('sounds/wrong_answer.mp3'));
@@ -192,31 +216,31 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
     remainingTime = widget.level.timeLimit;
   }
 
-void startTimer() {
-  timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-    if (!isPaused && mounted) {
-      setState(() {
-        if (remainingTime > 0) {
-          remainingTime--;
-          
-          if (remainingTime <= 10) {
-            if (!isCriticalTime) {
-              isCriticalTime = true;
+  void startTimer() {
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (!isPaused && mounted) {
+        setState(() {
+          if (remainingTime > 0) {
+            remainingTime--;
+            
+            if (remainingTime <= 10) {
+              if (!isCriticalTime) {
+                isCriticalTime = true;
+              }
+              if (!isPaused && _soundService.isSfxOn) {
+                _playTickerSound();
+              }
             }
-            if (!isPaused) {
-              _playTickerSound();
-            }
+          } else {
+            playSound('wrong_answer.mp3');
+            Future.delayed(const Duration(milliseconds: 500), () {
+              gameOver();
+            });
           }
-        } else {
-          playSound('wrong_answer.mp3');
-          Future.delayed(const Duration(milliseconds: 500), () {
-            gameOver();
-          });
-        }
-      });
-    }
-  });
-}
+        });
+      }
+    });
+  }
 
   Future<void> _playTickerSound() async {
   if (!_soundService.isSfxOn || isPaused) return;
@@ -372,9 +396,21 @@ void onTileTapped(int index) async {
 
   Future<void> _usePowerUp(int index) async {
     
+    bool shouldDeductPoints = true;
+    bool shouldProceed = true;
+
+    if (index == 1 && _isProcessingHint) return;
+    
     if (index == 0) { 
       if (_soundService.isSfxOn) {
         await _audioPlayer.play(AssetSource('sounds/shuffle.mp3'));
+      }
+    } else if (index == 1) { // Hint power-up
+      if (!_isHintAvailable()) {
+        _showErrorNotification('No hints available!');
+        _isProcessingHint = false;
+        shouldProceed = false;
+        shouldDeductPoints = false;
       }
     } else {
       if (_soundService.isSfxOn) {
@@ -382,41 +418,49 @@ void onTileTapped(int index) async {
       }
     }
 
-    final powerUp = powerUps[index];
-    
-    // Check if player has enough points
-    if (displayedPoints < powerUp['cost']) {
-      if (_soundService.isSfxOn) {
-        await _audioPlayer.play(AssetSource('sounds/error.mp3'));
+    if (!shouldProceed) return;
+
+      final powerUp = powerUps[index];
+      
+      // Check if player has enough points
+      if (displayedPoints < powerUp['cost']) {
+        if (_soundService.isSfxOn) {
+          await _audioPlayer.play(AssetSource('sounds/error.mp3'));
+        }
+        _showErrorNotification('Not enough points!');
+        return;
       }
-       _showErrorNotification('Not enough points!');
-       return;
+
+      setState(() {
+        displayedPoints -= powerUp['cost'] as int;
+      });
+
+      await ProgressManager.setCategoryPoints(
+        widget.category.id, 
+        displayedPoints,
+      );
+
+      try {
+        switch (index) {
+          case 0: // Shuffle
+            _shuffleTiles();
+            break;
+          case 1: // Hint
+            await _showHint();
+            break;
+          case 2: // Time
+            _addTime();
+            break;
+          case 3: // Delete
+            _removeDistractors();
+            break;
+        }
+      } finally {
+        if (index == 1) {
+          _isProcessingHint = false;
+        }
+      }
     }
-
-    setState(() {
-      displayedPoints -= powerUp['cost'] as int;
-    });
-
-     await ProgressManager.setCategoryPoints(
-      widget.category.id, 
-      displayedPoints,
-    );
-
-    switch (index) {
-      case 0: // Shuffle
-        _shuffleTiles();
-        break;
-      case 1: // Hint
-        await _showHint();
-        break;
-      case 2: // Time
-        _addTime();
-        break;
-      case 3: // Delete
-        _removeDistractors();
-        break;
-    }
-  }
 
   void _shuffleTiles() {
     setState(() {
@@ -430,41 +474,50 @@ void onTileTapped(int index) async {
   }
 
   Future<void> _showHint() async {
-  final emptyIndex = answerSpaces.indexWhere((letter) => letter.isEmpty);
-  if (emptyIndex == -1) return;
-
-  final correctLetter = widget.level.word[emptyIndex].toUpperCase();
- 
-  int letterIndex = -1;
-  for (int i = 0; i < displayTiles.length; i++) {
-    if (displayTiles[i] == correctLetter) {
-      letterIndex = i;
-      break;
+   try {
+    if (!_isHintAvailable()) {
+      _showErrorNotification('No hints available!');
+      return;
     }
-  }
-  
-  if (letterIndex == -1) return; // Letter not found in display tiles
 
-   setState(() {
-     _tileShadows[letterIndex] = true;
-     _hintedIndex = emptyIndex;
+    final emptyIndex = answerSpaces.indexWhere((letter) => letter.isEmpty);
+    if (emptyIndex == -1) return;
+
+    final correctLetter = widget.level.word[emptyIndex].toUpperCase();
+   
+    int letterIndex = -1;
+    for (int i = 0; i < displayTiles.length; i++) {
+      if (displayTiles[i] == correctLetter) {
+        letterIndex = i;
+        break;
+      }
+    }
+    
+    if (letterIndex == -1) return; // Letter not found in display tiles
+
+    setState(() {
+      _tileShadows[letterIndex] = true;
+      _hintedIndex = emptyIndex;
     });
 
-  // Start fade animation
-  _hintController.reset();
-  await _hintController.forward();
-  
-  setState(() {
-    // Move the letter from display to answer
-    answerSpaces[emptyIndex] = displayTiles[letterIndex];
-    isFilled[emptyIndex] = true;
-    displayTiles[letterIndex] = '';
-    movedTileIndices.add(letterIndex);
-    _hintedIndex = -1; // Reset hinted index
-  });
+    // Start fade animation
+    _hintController.reset();
+    await _hintController.forward();
+    
+    setState(() {
+      // Move the letter from display to answer
+      answerSpaces[emptyIndex] = displayTiles[letterIndex];
+      isFilled[emptyIndex] = true;
+      displayTiles[letterIndex] = '';
+      movedTileIndices.add(letterIndex);
+      _hintedIndex = -1; // Reset hinted index
+    });
 
-   if (!answerSpaces.contains('')) {
-    await checkAnswer();
+    if (!answerSpaces.contains('')) {
+      await checkAnswer();
+    }
+  } finally {
+    _isProcessingHint = false; // Ensure flag is reset
   }
 }
 
@@ -515,7 +568,6 @@ void onTileTapped(int index) async {
   });
   
   if (isPaused) {
-    // Pause the ticker sound if playing
     try {
       await _tickerPlayer.pause();
     } catch (e) {
@@ -526,7 +578,6 @@ void onTileTapped(int index) async {
       builder: (context) => _buildPauseDialog(),
     );
   } else {
-    // Resume ticker sound if we're in critical time
     if (remainingTime <= 10 && remainingTime > 0) {
       try {
         await _tickerPlayer.resume();
@@ -885,6 +936,7 @@ Widget _buildLetterSpace(int index) {
     timer.cancel();
     _audioPlayer.dispose();
     _tickerPlayer.dispose();
+    WidgetsBinding.instance.removeObserver(this);
     _resumeController.dispose();
     _quitController.dispose();
     _settingsController.dispose();
