@@ -419,6 +419,7 @@ void onTileTapped(int index) async {
     }
 
     if (!shouldProceed) return;
+    if (!shouldDeductPoints) return;
 
       final powerUp = powerUps[index];
       
