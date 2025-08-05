@@ -277,7 +277,7 @@ final List<String> _musicClues = [
 
 
 final List<String> _paintingWords = [
-  "canvas", "brush", "easel", "acrylic", "portrait", "landscape", "abstract",
+  "canvas", "brush", "palette", "easel", "acrylic", "portrait", "landscape", "abstract",
   "sketch", "fresco", "mural", "charcoal", "gouache", "texture", "shade", "highlight",
   "composition", "perspective", "layer", "glaze", "tone", "medium", "stroke", "frame",
   "color", "hue", "saturation", "contrast", "vivid", "blend", "detail", "line", "form",
@@ -298,7 +298,7 @@ final List<String> _paintingClues = [
   "Mark made by a pen or brush", "Shape or structure", "Repeated design", "Style of brush strokes",
   "Thick paint texture", "Faithful depiction", "Geometric abstraction", "Place to show art",
   "Art display", "Person who paints", "Highly regarded artwork", "Artist's mark",
-  "Preliminary work", "Distinct manner", "Set of colors", "Arrangement", "Decorative design",
+  "Preliminary work", "Distinct manner", "Set of colors", "Arrangement", "A decoration",
   "Surface for art", "art made from small pieces", "Materials used",
 ];
 
