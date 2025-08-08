@@ -183,7 +183,7 @@ List<Level> generateLevels(String categoryId) {
 final List<String> _medicineWords = [
   "anatomy", "antibody", "vaccine", "surgery", "therapy", "pharmacy", "pathogen",
   "cellular", "immunity", "biopsy", "epidemic", "pandemic", "antigen", "fracture",
-  "insulin", "glucose", "globulin", "sedation", "injector", "clinic", "nursing",
+  "insulin", "glucose", "globulin", "sedative", "syringe", "clinic", "nursing",
   "xray", "scan", "stethoscope", "pulse", "oxygen", "bandage", "tumor", "scanner", "vital",
   "dosage", "symptom", "virus", "bacteria", "lipid", "enzyme", "hormone", "renal",
   "spine", "bone", "muscle", "tissue", "organ", "brain", "lung", "grafting",
@@ -195,7 +195,7 @@ final List<String> _medicineClues = [
   "Protein produced to fight antigens",              // antibody
   "Stimulates immune response",                      // vaccine
   "Medical procedure involving incision",            // surgery
-  "Treatment of disease",                            // therapy
+  "A type of treatment",                            // therapy
   "Place to get medications",                        // pharmacy
   "Microorganism causing disease",                   // pathogen
   "Made of cells",                                   // cellular
@@ -271,7 +271,7 @@ final List<String> _musicClues = [
   "Non-electric music", "Device that increases sound", "Melodic sequence", "Repeated musical phrase",
   "Section of a song", "Main repeating section", "Linking section", "Highness or lowness of a sound",
   "Quality of a musical note", "Percussion instrument with wooden bars", "Related to harmony",
-   "Professional recording time"
+  "Professional recording time"
 ];
 
 
@@ -282,7 +282,7 @@ final List<String> _paintingWords = [
   "composition", "perspective", "layer", "glaze", "tone", "medium", "stroke", "frame",
   "color", "hue", "saturation", "contrast", "vivid", "blend", "detail", "line", "form",
   "pattern", "brushwork", "impasto", "realism", "cubism", "gallery", "exhibit", "artist",
-  "masterpiece", "signature", "study", "style", "palette", "design", "motif", "mosaic",
+  "masterpiece", "signature", "study", "style", "studio", "design", "motif", "water color", "mosaic",
   "media"
 ];
 
@@ -298,8 +298,8 @@ final List<String> _paintingClues = [
   "Mark made by a pen or brush", "Shape or structure", "Repeated design", "Style of brush strokes",
   "Thick paint texture", "Faithful depiction", "Geometric abstraction", "Place to show art",
   "Art display", "Person who paints", "Highly regarded artwork", "Artist's mark",
-  "Preliminary work", "Distinct manner", "Set of colors", "Arrangement", "A decoration",
-  "Surface for art", "art made from small pieces", "Materials used",
+  "Preliminary work", "Distinct manner", "Creative space for Artists", "Arrangement", "A decoration",
+  "Translucent pigments suspended in water", "art made from small pieces", "Materials used",
 ];
 
 
